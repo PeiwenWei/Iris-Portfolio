@@ -1,0 +1,87 @@
+.checkbox,
+.hamburger {
+  position: fixed;
+  top: 20px; left: 30px;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+}
+.checkbox {
+  opacity: 0;
+  cursor: pointer;
+  z-index: 15;
+}
+.hamburger {
+  z-index: 10;
+}
+.hamburger .wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: 0.5s ease;
+}
+.hamburger .wrapper .lines {
+  position: relative;
+}
+.hamburger .wrapper .lines,
+.hamburger .wrapper .lines::before,
+.hamburger .wrapper .lines::after {
+  background-color: black;
+  height: 1px;
+  width: 100%;
+}
+.hamburger .wrapper .lines::before,
+.hamburger .wrapper .lines::after {
+  content: '';
+  position: absolute;
+}
+.hamburger .wrapper .lines::before { top: -7px; }
+.hamburger .wrapper .lines::after  { top: 7px; }
+
+.checkbox:checked + .hamburger .wrapper {
+  transform: rotate(135deg);
+}
+.checkbox:checked + .hamburger .wrapper .lines::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+.checkbox:checked + .hamburger .wrapper .lines::after {
+  opacity: 0;
+}
+.checkbox:checked:hover + .hamburger .wrapper {
+  transform: rotate(225deg);
+}
+
+.menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 25rem;
+  top: 0;
+  left: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding-bottom: 5rem;
+  transition: 0.75s ease;
+  z-index: 5;
+}
+.menu a:first-child {
+  margin-top: 12rem;
+}
+.menu a {
+  color: transparent;
+  text-decoration: none;
+  width: 20.8rem;
+  padding: 1rem 0;
+  transition: 0.75s ease;
+}
+/* ~ =general sibling selector */
+.checkbox:checked ~ .menu {
+  background-color: rgba(245, 245, 245, 0.65);
+  /* left: 0; */
+  max-height: 50rem;
+}
+.checkbox:checked ~ .menu a {
+  color: black;
+}
